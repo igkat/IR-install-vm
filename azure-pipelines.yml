@@ -63,6 +63,8 @@ steps:
 
 - task: AzureCLI@2
   inputs:
+    azureSubscription: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
+    arguments: 'ok asd asd asdQ@ asdv westeurope asdas asd'
