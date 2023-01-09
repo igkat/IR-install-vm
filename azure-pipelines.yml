@@ -49,22 +49,28 @@
 
 
 
-name: Deploy Bicep files
+
 
 trigger:
 - main
 
+name: Deploy Bicep files
 
 variables:
+  vmImageName: 'ubuntu-latest'
+
+  azureServiceConnection: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
   resourceGroupName: 'examplebicRG'
   location: 'westeurope'
+  templateFile: 'main.bicep'
+pool:
+  vmImage: $(vmImageName)
 
 steps:
 
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
-    scriptType: 'ps'
+    scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
-    arguments: 'ok asd asd asdQ@ asdv westeurope asdas asd'
+    inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile)'
