@@ -3,59 +3,71 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+#trigger:
+#- main
 
-pool:
-  vmImage: ubuntu-latest
+#pool:
+ # vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+#steps:
+#- script: echo Hello, world!
+ # displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-
+#- script: |
+ #   echo Add other tasks to build, test, and deploy your project.
+  #  echo See https://aka.ms/yaml
+ #displayName: 'Run a multi-line script'
 
 
-steps:
-- task: TerraformInstaller@0
+
+
+#steps:
+#- task: TerraformInstaller@0
+ # inputs:
+  #  terraformVersion: 'latest'
+
+#- task: TerraformTaskV3@3
+ # inputs:
+  #  provider: 'azurerm'
+   # command: 'init'
+    #backendServiceArm: 'TestConnection'
+   # backendAzureRmResourceGroupName: 'terraform-rg-ik'
+  # backendAzureRmStorageAccountName: 'storagetfaccount'
+  #  backendAzureRmContainerName: 'storagetfcontainer'
+  #  backendAzureRmKey: 'terraform.tfstate'
+
+#- task: TerraformTaskV3@3
+#  inputs:
+#    provider: 'azurerm'
+#    command: 'apply'
+ #   environmentServiceNameAzureRM: 'TestConnection'
+#- script: |
+#    echo Add other tasks to build, test, and deploy your project.
+#    echo See https://aka.ms/yaml
+ # displayName: 'Run a multi-line script'
+
+
+- task: AzureCLI@2
   inputs:
-    terraformVersion: 'latest'
-
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'TestConnection'
-    backendAzureRmResourceGroupName: 'terraform-rg-ik'
-    backendAzureRmStorageAccountName: 'storagetfaccount'
-    backendAzureRmContainerName: 'storagetfcontainer'
-    backendAzureRmKey: 'terraform.tfstate'
-
-- task: TerraformTaskV3@3
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'TestConnection'
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
+    arguments: 'examplebicRG main.bicep'
 
 
-
-
-
-//
 name: Deploy Bicep files
 
 trigger:
 - main
 
+
 variables:
   resourceGroupName: 'examplebicRG'
   location: 'westeurope'
+
+- task: AzureCLI@2
+  inputs:
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
+    arguments: 'examplebicRG main.bicep'
