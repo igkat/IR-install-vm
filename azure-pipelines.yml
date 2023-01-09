@@ -59,9 +59,10 @@ variables:
   resourceGroupName: 'examplebicRG'
   location: 'westeurope'
 
+steps:
+
 - task: AzureCLI@2
   inputs:
-    scriptType: 'bash'
+    scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
-    arguments: 'examplebicRG main.bicep'
