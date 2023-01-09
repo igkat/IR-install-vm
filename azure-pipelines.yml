@@ -47,12 +47,6 @@
  # displayName: 'Run a multi-line script'
 
 
-- task: AzureCLI@2
-  inputs:
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az deployment group create --resource-group examplebicRG --template-file main.bicep'
-    arguments: 'examplebicRG main.bicep'
 
 
 name: Deploy Bicep files
