@@ -58,7 +58,11 @@ name: Deploy Bicep files
 
 variables:
   vmImageName: 'ubuntu-latest'
-
+  var1: 'datafactory5xofiqqspqniu'
+  var2: 'igkat12'
+  var3: 'admin12xdas@F'
+  var4: 'datafactory-vnet'
+  var5: 'default'
   azureServiceConnection: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
   resourceGroupName: 'examplebicRG'
   location: 'westeurope'
@@ -73,5 +77,5 @@ steps:
     azureSubscription: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    arguments: 'datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default'
-    inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default' 
+    arguments: '$(resourceGroupName) $(location) $(templateFile) $(var1) $(var2) $(var3) $(var4) $(var5)'
+    inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) $4 $1 $5 $6 $7 $2 $1 $8' 
