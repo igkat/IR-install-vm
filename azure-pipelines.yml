@@ -74,4 +74,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) $(resourceGroupName) $(templateFile) datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default'
-    arguments: 'datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default' 
+   # arguments: 'datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default' 
