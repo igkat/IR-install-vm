@@ -73,5 +73,5 @@ steps:
     azureSubscription: 'APN DUIT(36c22809-a26c-4be9-905d-44b748bba1b0)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default'
+    inlineScript: 'az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) $(resourceGroupName) $(templateFile) datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default'
     arguments: 'datafactory5xofiqqspqniu examplebicRG admin12xd admin12xdas@F datafactory-vnet westeurope examplebicRG default' 
